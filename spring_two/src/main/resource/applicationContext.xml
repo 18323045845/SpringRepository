@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <bean id="dh" class="com.cqust.ghb.jkimp.Student">
+            <property name="name">
+                <value>dh</value>
+            </property>
+            <property name="context">
+                <value>"我很聪明"</value>
+            </property>
+        </bean>
+        <bean id="ghb" class="com.cqust.ghb.jkimp.Student">
+            <property name="name">
+                <value>ghb</value>
+            </property>
+            <property name="context">
+                <value>"亿万富豪的女人必须聪明"</value>
+            </property>
+        </bean>
+
+        <bean id="colorInk" class="com.cqust.ghb.jkimp.ColorInk"/>
+        <bean id="greyInk"  class="com.cqust.ghb.jkimp.GreyInk"/>
+        <bean id="tp"       class="com.cqust.ghb.jkimp.TextPaper"/>
+        <bean id="tp1"      class="com.cqust.ghb.jkimp.TextPaper1"/>
+
+    <bean id="print" class="com.cqust.ghb.jkimp.Printter">
+        <property name="ink" ref="greyInk"/>
+        <property name="paper" ref="tp"/>
+    </bean>
+
+</beans>

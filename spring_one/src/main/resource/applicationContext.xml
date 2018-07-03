@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+
+    <!-- 扫描注解包 -->
+    <context:component-scan base-package="com.bdqn.ghb"/>
+
+    <!-- 引入外部的properties文件 -->
+    <!-- ctrl+shift+T 搜索包 ，show view  outline是显示应用包的属性  -->
+    <bean id="propertyPlaceholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:db.properties"/>
+    </bean>
+
+
+    <!-- 配置数据源 -->
+    <!-- 用户的是dbcp2连接池 -->
+    <bean id="dataS" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <!-- 连接初始值，连接池启动时创建的连接数量的初始值默认值是0 -->
+        <property name="initialSize" value="${initialSize}"/>
+        <!-- 最小空闲值.当空闲的连接数少于阀值时，连接池就会预申请去一些连接，以免洪峰来时来不及申请 默认值是0 -->
+        <property name="minIdle" value="${minIdle}"/>
+        <!-- 最大空闲值.当经过一个高峰时间后，连接池可以慢慢将已经用不到的连接慢慢释放一部分，一直减少到maxIdle为止 ，0时无限制 默认值是8 -->
+        <property name="maxIdle" value="${maxIdle}"/>
+    </bean>
+
+
+
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataS"/>
+    </bean>
+    <!-- 通知配置事物的传播行为  -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="trans*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+
+
+    <!-- 引入其他的xml配置，-*代表 applicationContext命名的所有xml-->
+    <import resource="applicationContext-*.xml"/>
+    <import resource="spring-servlet.xml"/>
+    <!-- 	<import resource="applicationContext-dao.xml"/>
+        <import resource="applicationContext-mybatis.xml"/> -->
+
+
+
+</beans>

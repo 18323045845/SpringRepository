@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <!--用于getbean（"userService"）-->
+        <bean id="userService" class="com.cqust.ghb.service.UserService">
+            <constructor-arg type="com.cqust.ghb.dao.UserDao">
+                <!--构造方法内部bean-->
+                <bean class="com.cqust.ghb.dao.UserDao"/>
+            </constructor-arg>
+            <constructor-arg type="java.lang.String" value="tom"/>
+            <constructor-arg index="2" value="30"/>
+        </bean>
+
+        <bean id="clazz" class="com.cqust.ghb.entity.Class" p:id="1" p:name="6年级"/>
+        <bean id="student" class="com.cqust.ghb.entity.Student" p:id="10" p:age="12" p:name="tomcat" p:stu-ref="clazz">
+            <property name="bookList">
+                <list>
+                    <null/>
+                    <value>三国</value>
+                    <value>琅琊榜</value>
+                </list>
+            </property>
+            <property name="moneySet">
+                <set>
+                    <value>人民币</value>
+                    <value>美元</value>
+                    <value>欧元</value>
+                </set>
+            </property>
+            <property name="healthMap">
+                <map>
+                    <entry key="长" value="12"/>
+                    <entry key="高" value="12"/>
+                    <entry key="宽" value="12"/>
+                </map>
+            </property>
+            <property name="ohter">
+                <props>
+                    <prop key="地址"/>
+                    <prop key="党员"/>
+                    <prop key="对象"/>
+                </props>
+            </property>
+        </bean>
+</beans>

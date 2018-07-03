@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+		
+		<!-- 配置dao接口扫描器 -->
+		<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+			<!-- basePackage 属性是映射器接口文件的包路径，你可以使用分号或者逗号，作为分隔符，设置多与一个的包路径 -->
+			<property name="basePackage" value="com/bdqn/ghb/dao"/>
+			<!-- 此处的value值与mybatis 配置文件的bean 中的id值 -->
+			<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+		</bean>
+		
+		
+		
+		
+</beans>

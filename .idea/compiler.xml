@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="aop_annotation" />
+        <module name="spring_agency" />
+        <module name="springMM01" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="aop_annotation" target="1.8" />
+      <module name="spring_agency" target="1.8" />
+      <module name="spring_aop" target="1.8" />
+      <module name="spring_one" target="1.8" />
+      <module name="spring_three" target="1.8" />
+      <module name="spring_two" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

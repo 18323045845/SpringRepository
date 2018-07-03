@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+	    xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+
+                 <!-- 包扫描器  -->  
+                  <context:component-scan base-package="com.bdqn.ghb"></context:component-scan> 
+
+		        
+		        <!-- 多视图解析器 -->
+		        <bean id="cmanager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		        	<property name="favorParameter" value="true"/>
+		        	<property name="mediaTypes">
+		        		<map>
+		        			<entry key="html" value="text/html;charset=utf-8"></entry>
+		        			<entry key="json" value="application/json;charset=utf-8"></entry>
+		        			<entry key="xml" value="text/xml;charset=utf-8"></entry>
+		        			
+		        		</map>
+		        	</property>
+		        </bean>
+		        
+		        <!-- 数据类型转化器 -->
+		       	 <mvc:annotation-driven>
+		      		<mvc:message-converters>
+		      			<bean  class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter"> 
+		      		<!-- 	设置响应的格式 -->
+		      				 <property name="supportedMediaTypes">
+		      					<list>
+		      						<value>text/html;charset=utf-8</value>
+		      						<value>application/json;charset=utf-8</value>
+		      						<value>text/xml;charset=utf-8</value>
+		      					</list>
+		      				</property> 
+		      				<!--默认就是时间格式，主要用于实体类有date类型的属性  -->
+					    	<!-- <property name="features">
+					      		<list>		      		
+					      			<value>WriteDateUseDateFormat</value>
+					      		</list>
+					      	</property>  -->
+		      		 </bean>
+		      		</mvc:message-converters>
+		      	</mvc:annotation-driven>  
+		        
+		        <!-- 配置多视图解析器 -->
+		        <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		        	<property name="ContentNegotiationManager" ref="cmanager"></property>
+		        	<property name="viewResolvers">
+		        		<list>
+		        			 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+						        	<property	name="prefix" value="/" />
+						        	<property   name="suffix" value=".jsp" />
+		        			</bean>
+		        		</list>
+		        	</property>
+		        </bean>
+		        
+		        <!-- 静态资源放过，比如script，和一些图片等等 -->
+		   <!--      <mvc:resources mapping="/js/**" location="/js/"/> -->
+</beans>

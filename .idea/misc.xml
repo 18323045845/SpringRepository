@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/aop_annotation" />
+    <file type="web" url="file://$PROJECT_DIR$/spring_agency" />
+    <file type="web" url="file://$PROJECT_DIR$/spring_aop" />
+    <file type="web" url="file://$PROJECT_DIR$/spring_one" />
+    <file type="web" url="file://$PROJECT_DIR$/spring_three" />
+    <file type="web" url="file://$PROJECT_DIR$/spring_two" />
+    <file type="web" url="file://$PROJECT_DIR$/springMM" />
+    <file type="web" url="file://$PROJECT_DIR$/springMM02" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/springMM/pom.xml" />
+        <option value="$PROJECT_DIR$/springMM01/pom.xml" />
+        <option value="$PROJECT_DIR$/spring_two/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/springMM/pom.xml" />
+        <option value="$PROJECT_DIR$/springMM02/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

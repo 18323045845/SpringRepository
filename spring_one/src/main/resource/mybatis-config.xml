@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+<!-- 别名是相应类的类名  -->
+	<typeAliases>
+		<package name="com.bdqn.ghb.entity" />
+	</typeAliases>
+
+	
+<!-- 这里可以给spring配置里面	
+	<mappers>
+		<mapper resource="com/bdqn/zmj/mapper/UserMapper.xml" />
+	</mappers> -->
+</configuration>
+
